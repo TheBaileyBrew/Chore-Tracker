@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ChoreTracker.AddTaskPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Add New Task"
+                VerticalOptions="StartAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Entry x:Name="taskTitle" Placeholder="Title of Chore">
+                <!-- Entry Box for Task Title -->
+            </Entry>
+            
+            <Entry x:Name="taskShortDesc" Placeholder="Short Description">
+                <!-- Entry Box for Task Short Description -->
+            </Entry>
+            
+            <Entry x:Name="taskLongDesc" Placeholder="Long Description">
+                <!-- Entry Box for Task Long Description -->
+            </Entry>
+            
+            <Entry x:Name="taskTimeValue" Placeholder="Value in Time on Switch">
+                <!-- Entry Box for Task Time Value (DOUBLE) -->
+            </Entry>
+            
+            <Entry x:Name="taskDollarValue" Placeholder="Value in Dollars for Exchange">
+                <!-- Entry Box for Task Dollar Value (DOUBLE) -->
+            </Entry>
+
+            <Button x:Name="buttonSubmit" Clicked="addTask_ToDatabase"
+                    HorizontalOptions="CenterAndExpand"
+                    BackgroundColor="White"
+                    WidthRequest="100"
+                    BorderWidth="1"
+                    CornerRadius="5"
+                    BorderColor="LightGray"
+                    Text="Submit"
+                    TextColor="Black"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

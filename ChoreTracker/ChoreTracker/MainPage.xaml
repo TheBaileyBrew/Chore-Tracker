@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ChoreTracker"
+             x:Class="ChoreTracker.MainPage">
+
+    <ContentPage.Content>
+        <StackLayout>
+            <!-- Main Title Object-->
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Start">
+                <Label Margin="10" Text="Chore Tracker" FontAttributes="Bold" FontSize="Large" HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+            
+            <!-- Child Earning Ticker -->
+            <StackLayout x:Name="childDetailsContainer" 
+                HorizontalOptions="Center" VerticalOptions="Center" Orientation="Horizontal">
+                <Label x:Name="child_name" Text="{Binding ChildName}" FontSize="Medium" HorizontalOptions="Start" Margin="5,0,5,0"/>
+                <Label x:Name="earned_minutes" Text="{Binding ChildEarnedTime}" FontAttributes="Italic" FontSize="Medium" HorizontalOptions="Start" Margin="0,0,5,0" />
+                <Label x:Name="earned_dollars" Text="{Binding ChildEarnedDollar}" FontAttributes="Italic" FontSize="Medium" HorizontalOptions="Start" Margin="0,0,5,0" />
+            </StackLayout>
+
+            <!-- Add Task Button-->
+            <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal" Padding="10,0,10,0">
+                <Button x:Name="buttonAdd" Clicked="addTask_Clicked" 
+                        BackgroundColor="White"
+                        HeightRequest="50"
+                        BorderWidth="1"
+                        CornerRadius="5"
+                        BorderColor="LightGray"
+                        Text="Add New Task"
+                        FontSize="Medium"
+                        TextColor="Black"/>
+                <Button x:Name="buttonNewChild" Clicked="addChild_ClickEvent" 
+                        BackgroundColor="White"
+                        HeightRequest="50"
+                        BorderWidth="1"
+                        CornerRadius="5"
+                        BorderColor="LightGray"
+                        Text="Add New Child"
+                        FontSize="Medium"
+                        TextColor="Black"/>
+            </StackLayout>
+
+            <!-- List View of available Tasks-->
+            <ListView x:Name="listTasks" VerticalOptions="FillAndExpand" CachingStrategy="RecycleElement" ItemTapped="selectedTask_ClickEvent">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout x:Name="listObjectContainer" Orientation="Vertical">
+                                <Label x:Name="TaskTitleLabel" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Margin="5,0,0,0" 
+                                        Text="{Binding TaskTitle}" FontSize="Large" />
+                                <StackLayout HorizontalOptions="Start" Orientation="Horizontal" Margin="5,0,0,0">
+                                    <StackLayout x:Name="timeWorthContainer" 
+                                                 Orientation="Horizontal"
+                                                 HorizontalOptions="Start">
+                                        <Label x:Name="TaskTimeWorth" 
+                                               Text="{Binding TaskWorthSwitchTime}" 
+                                               FontSize="Medium" 
+                                               TextColor="DarkRed" />
+                                        <Label x:Name="TaskTimeWorthAppendix" 
+                                               Text="Minutes" 
+                                               FontSize="Medium" 
+                                               TextColor="DarkRed" />
+                                    </StackLayout>
+                                    <StackLayout x:Name="DollarWorthContainer" 
+                                                 Orientation="Horizontal"
+                                                 HorizontalOptions="Start">
+                                        <Label x:Name="TaskDollarWorth" 
+                                               Text="or $" 
+                                               FontSize="Medium" 
+                                               TextColor="DarkRed" />
+                                        <Label x:Name="TaskDollarWorthAppendix" 
+                                               Text="{Binding TaskWorthDollarValue}" 
+                                               FontSize="Medium" 
+                                               TextColor="DarkRed" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>
