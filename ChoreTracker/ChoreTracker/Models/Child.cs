@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ChoreTracker.Models
 {
-    class Child
+    public class Child
     {
         public string ChildName { get; set; }
         public double ChildEarnedTime { get; set; }

@@ -17,7 +17,8 @@ namespace ChoreTracker
         public AddTaskPage ()
 		{
 			InitializeComponent ();
-		}
+            Device.BeginInvokeOnMainThread(() => { Title = "Add A Chore"; });
+        }
 
         private async void addTask_ToDatabase(object sender, EventArgs e)
         {
@@ -32,8 +33,8 @@ namespace ChoreTracker
 
             await DisplayAlert("Success", "Task added successfully", "OK");
 
-           
-            await Navigation.PushAsync(new MainPage());
+
+            await Navigation.PopAsync();
 
         }
     }

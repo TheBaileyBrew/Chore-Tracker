@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
-             x:Class="ChoreTracker.Views.ChildPopupPage">
+             x:Class="ChoreTracker.Views.PopupViews.EarningsUsed">
     <pages:PopupPage.Animation>
         <animations:ScaleAnimation 
       PositionIn="Center"
@@ -16,20 +16,20 @@
       EasingOut="SinIn"
       HasBackgroundAnimation="True"/>
     </pages:PopupPage.Animation>
-    <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Padding="25, 25, 25, 25">
+    <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Padding="20, 20, 20, 20">
         <StackLayout BackgroundColor="White" Padding="0, 10, 0, 0">
-            <Label Text="Enter Child Name" TextColor="Black" FontSize="20" HorizontalOptions="Center"/>
+            <Label Text="How Much To Use?" TextColor="Gray" FontSize="20" HorizontalOptions="Center"/>
             <ScrollView>
                 <StackLayout>
                     <StackLayout Orientation="Horizontal">
-                        <Entry x:Name="childEntryInput" 
-                            Placeholder="Type Name Here..." 
+                        <Entry x:Name="dollar_used"
+                               Placeholder="00.00" 
                                HorizontalOptions="FillAndExpand" 
-                               PlaceholderColor="DarkGray" 
-                               Keyboard="Email"
-                               TextColor="Gray"/>
+                               PlaceholderColor="Silver" 
+                               Keyboard="Numeric"
+                               TextColor="Black"/>
                     </StackLayout>
-                    <Button Text="Close" TextColor="Black" Clicked="OnClose"/>
+                    <Button Text="Use Earnings" TextColor="Red" Clicked="OnClose"/>
                 </StackLayout>
             </ScrollView>
         </StackLayout>

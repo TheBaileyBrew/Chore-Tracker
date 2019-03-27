@@ -13,9 +13,13 @@ namespace ChoreTracker
 
             MainPage = new NavigationPage(new MainPage())
             {
+                Title = "Chore Tracker",
                 BarBackgroundColor = Color.Black,
                 BarTextColor = Color.White
             };
+
+            
+
         }
 
         protected override void OnStart()

@@ -2,28 +2,25 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ChoreTracker.AddTaskPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Add New Task"
-                VerticalOptions="StartAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <Entry x:Name="taskTitle" Placeholder="Title of Chore">
+    <ContentPage.Content Title="Add New Chore">
+        <StackLayout VerticalOptions="StartAndExpand" Padding="0,20,0,0">
+            <Entry x:Name="taskTitle" Placeholder="Title of Chore" Margin="10,5,10,5">
                 <!-- Entry Box for Task Title -->
             </Entry>
-            
-            <Entry x:Name="taskShortDesc" Placeholder="Short Description">
+
+            <Entry x:Name="taskShortDesc" Placeholder="Short Description" Margin="10,5,10,5">
                 <!-- Entry Box for Task Short Description -->
             </Entry>
-            
-            <Entry x:Name="taskLongDesc" Placeholder="Long Description">
+
+            <Entry x:Name="taskLongDesc" Placeholder="Long Description" Margin="10,5,10,5">
                 <!-- Entry Box for Task Long Description -->
             </Entry>
-            
-            <Entry x:Name="taskTimeValue" Placeholder="Value in Time on Switch">
+
+            <Entry x:Name="taskTimeValue" Placeholder="Value in Time on Switch" Margin="10,5,10,5">
                 <!-- Entry Box for Task Time Value (DOUBLE) -->
             </Entry>
-            
-            <Entry x:Name="taskDollarValue" Placeholder="Value in Dollars for Exchange">
+
+            <Entry x:Name="taskDollarValue" Placeholder="Value in Dollars for Exchange" Margin="10,5,10,5">
                 <!-- Entry Box for Task Dollar Value (DOUBLE) -->
             </Entry>
 
@@ -35,7 +32,8 @@
                     CornerRadius="5"
                     BorderColor="LightGray"
                     Text="Submit"
-                    TextColor="Black"/>
+                    TextColor="Black"
+                    Margin="10,5,10,5"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

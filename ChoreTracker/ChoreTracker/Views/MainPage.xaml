@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ChoreTracker"
+             x:Class="ChoreTracker.MainPage">
+    <ContentPage.Content Title="Chore Tracker">
+        <StackLayout Margin="10,10,10,10">
+            <!-- Child Earning Grid Layout -->
+            <StackLayout x:Name="childDetailsContainer" 
+                HorizontalOptions="Center" VerticalOptions="Center" Orientation="Horizontal" >
+
+                <Grid ColumnSpacing="2" RowSpacing="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition x:Name="brycenRowContainer" Height="20"/>
+                        <RowDefinition x:Name="travisRowContainer" Height="20"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Switch Time" FontSize="Small" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="1"/>
+                    <Label Text="Allowance" FontSize="Small" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="2"/>
+                    <Label Text="Brycen M." FontSize="Small" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="1" Grid.Column="0"/>
+                    <Label Text="Travis J." FontSize="Small" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="2" Grid.Column="0"/>
+                    <Label x:Name="B_Switch" Text=" " FontSize="Small" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="1" Grid.Column="1"/>
+                    <Label x:Name="B_Allow" Text=" " FontSize="Small" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="1" Grid.Column="2"/>
+                    <Label x:Name="T_Switch" Text=" " FontSize="Small" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="2" Grid.Column="1"/>
+                    <Label x:Name="T_Allow" Text=" " FontSize="Small" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="2" Grid.Column="2"/>
+                </Grid>
+
+            </StackLayout>
+
+            <!-- Add Task Button-->
+            <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal" Padding="10,0,10,0">
+                <Button x:Name="buttonAdd" Clicked="addTask_Clicked" 
+                        BackgroundColor="White"
+                        HeightRequest="50"
+                        BorderWidth="1"
+                        CornerRadius="5"
+                        BorderColor="LightGray"
+                        Text="Add New Task"
+                        FontSize="Medium"
+                        TextColor="Black"/>
+                <Button x:Name="buttonNewChild" Clicked="clearTimes_ClickEvent" 
+                        BackgroundColor="White"
+                        HeightRequest="50"
+                        BorderWidth="1"
+                        CornerRadius="5"
+                        BorderColor="LightGray"
+                        Text="Reset Times"
+                        FontSize="Medium"
+                        TextColor="Black"/>
+                <Button x:Name="buttonRedeem" Clicked="redeemEarnings_ClickEvent" 
+                        BackgroundColor="White"
+                        HeightRequest="50"
+                        BorderWidth="1"
+                        CornerRadius="5"
+                        BorderColor="LightGray"
+                        Text="Redeem Earnings"
+                        FontSize="Medium"
+                        TextColor="Black"/>
+            </StackLayout>
+
+            <!-- List View of available Tasks-->
+            <ListView x:Name="listTasks" VerticalOptions="FillAndExpand" CachingStrategy="RecycleElement" ItemTapped="selectedTask_ClickEvent">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout x:Name="listObjectContainer" Orientation="Vertical">
+                                <StackLayout HorizontalOptions="Start" 
+                                             Orientation="Horizontal" 
+                                             Margin="5,0,0,0">
+                                    <Label x:Name="TaskTitleLabel" 
+                                           VerticalOptions="CenterAndExpand" 
+                                           HorizontalOptions="Start" 
+                                           Margin="5,0,0,0" 
+                                           Text="{Binding TaskTitle}"
+                                           TextColor="Black"
+                                           FontAttributes="Bold"
+                                           FontSize="Large" />
+                                    <Label x:Name="TaskShortDescLabel" 
+                                           VerticalOptions="CenterAndExpand" 
+                                           HorizontalOptions="StartAndExpand" 
+                                           Margin="5,0,0,0" 
+                                           Text="{Binding TaskShortDescription}"
+                                           TextColor="LightGray"
+                                           FontAttributes="Italic"
+                                           FontSize="Large" />
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="Start" 
+                                             Orientation="Horizontal" 
+                                             Margin="5,0,0,0">
+                                    <StackLayout x:Name="timeWorthContainer" 
+                                                 Orientation="Horizontal"
+                                                 HorizontalOptions="Start">
+                                        <Label x:Name="TaskTimeWorth" 
+                                               Text="{Binding TaskWorthSwitchTime}" 
+                                               FontSize="Large" 
+                                               TextColor="DarkRed" />
+                                        <Label x:Name="TaskTimeWorthAppendix" 
+                                               Text="Minutes" 
+                                               FontSize="Large" 
+                                               TextColor="DarkRed" />
+                                    </StackLayout>
+                                    <StackLayout x:Name="DollarWorthContainer" 
+                                                 Orientation="Horizontal"
+                                                 HorizontalOptions="Start">
+                                        <Label x:Name="TaskDollarWorth" 
+                                               Text="or $" 
+                                               FontSize="Large" 
+                                               TextColor="DarkRed" />
+                                        <Label x:Name="TaskDollarWorthAppendix" 
+                                               Text="{Binding TaskWorthDollarValue}" 
+                                               FontSize="Large" 
+                                               TextColor="DarkRed" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

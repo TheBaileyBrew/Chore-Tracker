@@ -76,9 +76,6 @@ namespace ChoreTracker.Helpers
         //Method for adding a single CHILD Object to the database
         public async Task AddChild(string childName)
         {
-            
-
-
             await firebase.Child("Children")
                 .PostAsync(new Child() { ChildName = childName, ChildEarnedDollar = 0.00, ChildEarnedTime = 0.00 });
         }
@@ -98,6 +95,38 @@ namespace ChoreTracker.Helpers
                 .Child("Children")
                 .Child(toUpdateChild.Key)
                 .PutAsync(new Child() { ChildName = childName, ChildEarnedDollar = (currentValue + earnedValue), ChildEarnedTime = (currentTime + earnedTime) });
+        }
+
+        //Method for updating a selected CHILD Object
+        public async Task SubtractChild(string childName, double earnedValue, double earnedTime)
+        {
+            var toUpdateChild = (await firebase
+                .Child("Children")
+                .OnceAsync<Child>()).Where(a => a.Object.ChildName == childName).FirstOrDefault();
+
+            var currentValue = toUpdateChild.Object.ChildEarnedDollar;
+            var currentTime = toUpdateChild.Object.ChildEarnedTime;
+
+            await firebase
+                .Child("Children")
+                .Child(toUpdateChild.Key)
+                .PutAsync(new Child() { ChildName = childName, ChildEarnedDollar = (currentValue - earnedValue), ChildEarnedTime = (currentTime - earnedTime) });
+        }
+
+        //Method for updating a selected CHILD Object
+        public async Task ResetChild(string childName, double earnedValue, double earnedTime)
+        {
+            var toUpdateChild = (await firebase
+                .Child("Children")
+                .OnceAsync<Child>()).Where(a => a.Object.ChildName == childName).FirstOrDefault();
+
+            var currentValue = toUpdateChild.Object.ChildEarnedDollar;
+            var currentTime = toUpdateChild.Object.ChildEarnedTime;
+
+            await firebase
+                .Child("Children")
+                .Child(toUpdateChild.Key)
+                .PutAsync(new Child() { ChildName = childName, ChildEarnedDollar = (earnedValue), ChildEarnedTime = (earnedTime) });
         }
 
 
